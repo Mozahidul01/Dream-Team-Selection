@@ -4,22 +4,22 @@ export default function Header() {
   const [navbar, setNavbar] = useState(false);
 
   return (
-    <nav className="w-full bg-gray-300 dark:bg-gray-800 shadow">
+    <nav className="w-full bg-slate-100 dark:bg-slate-800 shadow">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
-          <h2 className="text-gray-900 font-bold text-2xl tracking-tight uppercase dark:text-white">
+          <h2 className="text-slate-900 font-bold text-2xl tracking-tight uppercase dark:text-white">
             Dream Team
           </h2>
 
           <div className="md:hidden">
             <button
-              className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+              className="p-2 text-slate-700 rounded-md outline-none focus:border-slate-400 focus:border"
               onClick={() => setNavbar(!navbar)}
             >
               {navbar ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6 fill-gray-900 dark:fill-white"
+                  className="w-6 h-6 fill-slate-900 dark:fill-white"
                   viewBox="0 0 20 20"
                 >
                   <path
@@ -31,7 +31,7 @@ export default function Header() {
               ) : (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6 stroke-gray-900 dark:stroke-white"
+                  className="w-6 h-6 stroke-slate-900 dark:stroke-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={2}
@@ -53,13 +53,13 @@ export default function Header() {
           }`}
         >
           <ul className="items-center justify-end space-y-4 md:flex md:space-x-6 md:space-y-0">
-            <li className="text-gray-700 dark:text-gray-400 text-lg font-semibold hover:text-teal-600">
+            <li className="text-slate-700 dark:text-slate-400 text-lg font-semibold hover:text-teal-600">
               <a href="#teams">Teams</a>
             </li>
-            <li className="text-gray-700 dark:text-gray-400 text-lg font-semibold hover:text-teal-600">
+            <li className="text-slate-700 dark:text-slate-400 text-lg font-semibold hover:text-teal-600">
               <a href="#about">About</a>
             </li>
-            <li className="text-gray-700 dark:text-gray-400 text-lg font-semibold hover:text-teal-600">
+            <li className="text-slate-700 dark:text-slate-400 text-lg font-semibold hover:text-teal-600">
               <a href="#contact">Contact</a>
             </li>
           </ul>

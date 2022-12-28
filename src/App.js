@@ -4,7 +4,7 @@ import Players from "./components/Players";
 
 function App() {
   return (
-    <div className="bg-gray-200 dark:bg-gray-900 ">
+    <div className="bg-slate-100 dark:bg-gray-900 ">
       <Header />
       <Players />
     </div>
