@@ -27,6 +27,11 @@ const PopupCart = ({ isOpen, cartToggle }) => {
             <li>list-item8</li>
             <li>list-item9</li>
             <li>list-item10</li>
+            <li>list-item11</li>
+            <li>list-item12</li>
+            <li>list-item13</li>
+            <li>list-item14</li>
+            <li>list-item15</li>
           </div>
 
           <button className="w-full py-2 text-slate-900 font-bold text-md text-center border-2 rounded-sm border-teal-600 hover:bg-teal-500 focus:ring-4 focus:ring-teal-300 dark:text-white dark:border-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800">
