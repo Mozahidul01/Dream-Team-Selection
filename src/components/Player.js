@@ -5,7 +5,7 @@ export default function Player({ player }) {
 
   return (
     <div className="max-w-2xl mx-auto my-2">
-      <div className="bg-slate-50 shadow-md rounded-md max-w-sm dark:bg-gray-700 ">
+      <div className="bg-slate-50 shadow-md rounded-md max-w-sm dark:bg-slate-700 ">
         <img
           className="w-[280px] rounded-t-md bg-zinc-700"
           src={img}
