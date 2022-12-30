@@ -4,7 +4,7 @@ export default function Header() {
   const [navbar, setNavbar] = useState(false);
 
   return (
-    <nav className="sticky top-0 w-full h-[8vh] bg-slate-100 dark:bg-slate-800 shadow-md">
+    <nav className="sticky top-0 w-full bg-slate-100 dark:bg-slate-800 shadow-md">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
           <h2 className="text-slate-900 font-bold text-2xl tracking-tight uppercase dark:text-white">

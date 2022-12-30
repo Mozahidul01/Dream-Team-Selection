@@ -19,7 +19,7 @@ export default function Players() {
   return (
     <>
       {isOpen ? (
-        <div className="w-full h-[92vh]" />
+        <div className="w-full h-[93.1vh]" />
       ) : (
         <div className="container mx-auto grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 py-5">
           {players.map((player) => (
