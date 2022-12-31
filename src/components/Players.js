@@ -27,15 +27,20 @@ export default function Players() {
       {isOpen ? (
         <div className="w-full h-[93.1vh]" />
       ) : (
-        <div className="container mx-auto grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 py-5">
-          {players.map((player) => (
-            <Player
-              key={player.id}
-              player={player}
-              handleSelect={handleSelect}
-            />
-          ))}
-        </div>
+        <>
+          <p className="text-xl font-medium mt-4 text-center text-slate-900 dark:text-slate-100">
+            Select Minimun 15 Players to Create Your Team
+          </p>
+          <div className="container mx-auto grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 py-4">
+            {players.map((player) => (
+              <Player
+                key={player.id}
+                player={player}
+                handleSelect={handleSelect}
+              />
+            ))}
+          </div>
+        </>
       )}
       <PopupCart
         isOpen={isOpen}
