@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { addToDb } from "../utilities/localStorage";
 import Player from "./Player";
 import PopupCart from "./Popupcart";
 
@@ -20,6 +21,7 @@ export default function Players() {
   const handleSelect = (player) => {
     const newSelectedPlayer = [...selectedPlayer, player];
     setSelectedPlayer(newSelectedPlayer);
+    addToDb(player.id);
   };
 
   return (
