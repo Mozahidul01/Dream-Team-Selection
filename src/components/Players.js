@@ -28,7 +28,7 @@ export default function Players() {
         <div className="w-full h-[93.1vh]" />
       ) : (
         <>
-          <p className="text-xl font-medium mt-4 text-center text-slate-900 dark:text-slate-100">
+          <p className="text-lg md:text-xl font-medium mt-4 text-center text-slate-900 dark:text-slate-100">
             Select Minimun 15 Players to Create Your Team
           </p>
           <div className="container mx-auto grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 py-4">
