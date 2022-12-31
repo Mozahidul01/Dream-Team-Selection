@@ -1,6 +1,7 @@
 import { Users, X } from "react-feather";
+import CartContainer from "./CartContainer";
 
-const PopupCart = ({ isOpen, cartToggle }) => {
+const PopupCart = ({ isOpen, cartToggle, selectedPlayer }) => {
   return (
     <div>
       {isOpen && (
@@ -16,22 +17,12 @@ const PopupCart = ({ isOpen, cartToggle }) => {
             <X />
           </button>
 
+          <p>Player Selected: {selectedPlayer.length}</p>
+
           <div className="py-2">
-            <li>list-item1</li>
-            <li>list-item2</li>
-            <li>list-item3</li>
-            <li>list-item4</li>
-            <li>list-item5</li>
-            <li>list-item6</li>
-            <li>list-item7</li>
-            <li>list-item8</li>
-            <li>list-item9</li>
-            <li>list-item10</li>
-            <li>list-item11</li>
-            <li>list-item12</li>
-            <li>list-item13</li>
-            <li>list-item14</li>
-            <li>list-item15</li>
+            {selectedPlayer.map((player) => (
+              <CartContainer key={player.id} player={player} />
+            ))}
           </div>
 
           <button className="w-full py-2 text-slate-900 font-bold text-md text-center border-2 rounded-sm border-teal-600 hover:bg-teal-500 focus:ring-4 focus:ring-teal-300 dark:text-white dark:border-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800">
