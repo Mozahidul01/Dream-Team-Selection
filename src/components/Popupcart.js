@@ -6,18 +6,21 @@ const PopupCart = ({ isOpen, cartToggle, selectedPlayer }) => {
     <div>
       {isOpen && (
         <div
-          className={`fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2.5 mr-4 shadow-md rounded-md z-10 w-3/4 max-w-[720px] bg-slate-50 text-black dark:bg-slate-700 dark:text-white ${
+          className={`fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-x-hidden overflow-y-scroll scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-slate-800 p-4 shadow-md rounded-md z-10 w-3/4 max-w-[720px] max-h-[80vh] bg-slate-50 text-black dark:bg-slate-700 dark:text-white ${
             isOpen ? "block" : "hidden"
           }`}
         >
-          <button
-            onClick={() => cartToggle()}
-            className="p-2 self-end rounded-full hover:bg-slate-800"
-          >
-            <X />
-          </button>
-
-          <p>Player Selected: {selectedPlayer.length}</p>
+          <div className="flex justify-between items-center mb-4">
+            <p className="text-lg font-semibold text-slate-900 dark:text-slate-50">
+              Player Selected: {selectedPlayer.length}
+            </p>
+            <button
+              onClick={() => cartToggle()}
+              className="p-2 self-end rounded-full hover:bg-slate-800"
+            >
+              <X />
+            </button>
+          </div>
 
           <div className="py-2">
             {selectedPlayer.map((player) => (
