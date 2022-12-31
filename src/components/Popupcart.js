@@ -28,7 +28,7 @@ const PopupCart = ({ isOpen, cartToggle, selectedPlayer }) => {
             ))}
           </div>
 
-          <button className="w-full py-2 text-slate-900 font-bold text-md text-center border-2 rounded-sm border-teal-600 hover:bg-teal-500 focus:ring-4 focus:ring-teal-300 dark:text-white dark:border-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800">
+          <button className="w-full py-2 font-bold text-md text-center border-2 rounded-sm text-slate-900 border-teal-600 hover:bg-teal-500 focus:ring-4 focus:ring-teal-300 dark:text-white dark:border-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800">
             Select Playing XI
           </button>
         </div>
@@ -37,7 +37,16 @@ const PopupCart = ({ isOpen, cartToggle, selectedPlayer }) => {
         onClick={() => cartToggle()}
         className="fixed flex items-center justify-center bottom-0 right-0 shadow-md w-14 h-14 mr-4 mb-4 rounded-full bg-teal-500 hover:bg-teal-600 dark:bg-teal-700 dark:text-white dark:hover:bg-teal-800"
       >
-        {isOpen ? <X /> : <Users />}
+        {isOpen ? (
+          <X />
+        ) : (
+          <div className="relative">
+            <span className="absolute bottom-6 left-6 bg-slate-700 text-slate-100 dark:bg-slate-200 dark:text-slate-900 font-medium px-2 py-0.5 rounded-full">
+              {selectedPlayer.length}
+            </span>
+            <Users />
+          </div>
+        )}
       </button>
     </div>
   );

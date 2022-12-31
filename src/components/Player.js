@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Player({ player, handleSelect }) {
   const { name, role, age, img } = player;
+
+  const [disabled, setDisabled] = useState(false);
 
   return (
     <div className="max-w-2xl mx-auto my-2">
@@ -18,8 +20,13 @@ export default function Player({ player, handleSelect }) {
             <span className="font-semibold">Role:</span> {role}
           </p>
           <button
+            disabled={disabled}
             onClick={() => handleSelect(player)}
-            className="w-full py-2 text-slate-900 font-bold text-md text-center border-2 rounded-sm border-teal-600 hover:bg-teal-500 focus:ring-4 focus:ring-teal-300 dark:text-white dark:border-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800"
+            className={`w-full py-2 font-bold text-md text-center border-2 rounded-sm ${
+              disabled
+                ? "text-gray-200 bg-gray-500 rounded focus:outline-none"
+                : "text-slate-900 border-teal-600 hover:bg-teal-500 focus:ring-4 focus:ring-teal-300 dark:text-white dark:border-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800"
+            } `}
           >
             Select
           </button>
