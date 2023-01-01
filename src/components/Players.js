@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { addToDb, getstoredPlayer } from "../utilities/localStorage";
+import {
+  addToDb,
+  getstoredPlayer,
+  removeFromDb,
+} from "../utilities/localStorage";
 import Player from "./Player";
 import PopupCart from "./Popupcart";
 
@@ -8,12 +12,14 @@ export default function Players() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [selectedPlayer, setSelectedPlayer] = useState([]);
 
+  //Load Data
   useEffect(() => {
     fetch("data.JSON")
       .then((res) => res.json())
       .then((data) => setPlayers(data));
   }, []);
 
+  //Load Data from Local Storage
   useEffect(() => {
     const storedPlayer = getstoredPlayer();
     const savedPlayer = [];
@@ -28,10 +34,12 @@ export default function Players() {
     setSelectedPlayer(savedPlayer);
   }, [players]);
 
+  //Cart toggle btn function
   const toggleBtn = () => {
     setIsCartOpen(!isCartOpen);
   };
 
+  //Select Player Button handler function
   const handleSelect = (chosenPlayer) => {
     let newSelectedPlayer = [];
     const existsPlayer = selectedPlayer.find(
@@ -50,6 +58,23 @@ export default function Players() {
 
     setSelectedPlayer(newSelectedPlayer);
     addToDb(chosenPlayer.id);
+  };
+
+  //Delete player button handler function
+  const handleDelete = (chosenPlayer) => {
+    const existsPlayer = selectedPlayer.find(
+      (player) => player.id === chosenPlayer.id
+    );
+    if (existsPlayer) {
+      chosenPlayer.quantity = 0;
+    }
+
+    const remainPlayers = selectedPlayer.filter(
+      (player) => player.id !== chosenPlayer.id
+    );
+    setSelectedPlayer(remainPlayers);
+
+    removeFromDb(chosenPlayer.id);
   };
 
   return (
@@ -76,6 +101,7 @@ export default function Players() {
         isOpen={isCartOpen}
         cartToggle={toggleBtn}
         selectedPlayer={selectedPlayer}
+        handleDelete={handleDelete}
       />
     </>
   );

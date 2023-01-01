@@ -1,7 +1,7 @@
 import { Users, X } from "react-feather";
 import CartContainer from "./CartContainer";
 
-const PopupCart = ({ isOpen, cartToggle, selectedPlayer }) => {
+const PopupCart = ({ isOpen, cartToggle, selectedPlayer, handleDelete }) => {
   return (
     <div>
       {isOpen && (
@@ -24,7 +24,11 @@ const PopupCart = ({ isOpen, cartToggle, selectedPlayer }) => {
 
           <div className="py-2">
             {selectedPlayer.map((player) => (
-              <CartContainer key={player.id} player={player} />
+              <CartContainer
+                key={player.id}
+                player={player}
+                handleDelete={handleDelete}
+              />
             ))}
           </div>
 

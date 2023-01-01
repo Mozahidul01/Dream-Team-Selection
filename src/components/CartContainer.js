@@ -1,7 +1,7 @@
 import React from "react";
 import { X } from "react-feather";
 
-export default function CartContainer({ player }) {
+export default function CartContainer({ player, handleDelete }) {
   return (
     <div className="flex justify-between items-center bg-slate-200 rounded-md px-2 mb-2 dark:bg-slate-600">
       <div className="flex gap-4 items-center">
@@ -10,7 +10,10 @@ export default function CartContainer({ player }) {
           {player.name}
         </p>
       </div>
-      <button className="p-2 rounded-full hover:bg-slate-800">
+      <button
+        onClick={() => handleDelete(player)}
+        className="p-2 rounded-full hover:bg-slate-800"
+      >
         <X />
       </button>
     </div>
