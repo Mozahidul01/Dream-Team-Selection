@@ -1,11 +1,6 @@
 // use local storage to manage data
 const addToDb = (id) => {
-  let selectedPlayer = {};
-
-  const storedPlayer = localStorage.getItem("selected-player");
-  if (storedPlayer) {
-    selectedPlayer = JSON.parse(storedPlayer);
-  }
+  let selectedPlayer = getstoredPlayer();
 
   // add quantity
   const quantity = selectedPlayer[id];

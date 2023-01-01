@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { addToDb } from "../utilities/localStorage";
+import { addToDb, getstoredPlayer } from "../utilities/localStorage";
 import Player from "./Player";
 import PopupCart from "./Popupcart";
 
 export default function Players() {
   const [players, setPlayers] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const [selectedPlayer, setSelectedPlayer] = useState([]);
 
   useEffect(() => {
@@ -14,19 +14,47 @@ export default function Players() {
       .then((data) => setPlayers(data));
   }, []);
 
+  useEffect(() => {
+    const storedPlayer = getstoredPlayer();
+    const savedPlayer = [];
+    for (const id in storedPlayer) {
+      const addedPlayer = players.find((player) => player.id === id);
+      if (addedPlayer) {
+        const quantity = storedPlayer[id];
+        addedPlayer.quantity = quantity;
+        savedPlayer.push(addedPlayer);
+      }
+    }
+    setSelectedPlayer(savedPlayer);
+  }, [players]);
+
   const toggleBtn = () => {
-    setIsOpen(!isOpen);
+    setIsCartOpen(!isCartOpen);
   };
 
-  const handleSelect = (player) => {
-    const newSelectedPlayer = [...selectedPlayer, player];
+  const handleSelect = (chosenPlayer) => {
+    let newSelectedPlayer = [];
+    const existsPlayer = selectedPlayer.find(
+      (player) => player.id === chosenPlayer.id
+    );
+    if (!existsPlayer) {
+      chosenPlayer.quantity = 1;
+      newSelectedPlayer = [...selectedPlayer, chosenPlayer];
+    } else {
+      const restPlayers = selectedPlayer.filter(
+        (player) => player.id !== chosenPlayer.id
+      );
+      existsPlayer.quantity = existsPlayer.quantity + 1;
+      newSelectedPlayer = [...restPlayers, existsPlayer];
+    }
+
     setSelectedPlayer(newSelectedPlayer);
-    addToDb(player.id);
+    addToDb(chosenPlayer.id);
   };
 
   return (
     <>
-      {isOpen ? (
+      {isCartOpen ? (
         <div className="w-full h-[93.1vh]" />
       ) : (
         <>
@@ -45,7 +73,7 @@ export default function Players() {
         </>
       )}
       <PopupCart
-        isOpen={isOpen}
+        isOpen={isCartOpen}
         cartToggle={toggleBtn}
         selectedPlayer={selectedPlayer}
       />
